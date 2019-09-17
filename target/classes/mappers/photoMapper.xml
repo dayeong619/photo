@@ -2,7 +2,15 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yi.mapper.BoardMapper">
+<mapper namespace="com.yi.mapper.photoMapper">
+	<insert id="addAttach">
+   		insert into photoalbum(filename, regdate) values (#{filename}, now())
+   	</insert>
+   
+  	<select id="getAttach" resultType="PhotoalbumVO">
+   		select * from photoalbum
+  	</select>
+	
 	
 </mapper>
 

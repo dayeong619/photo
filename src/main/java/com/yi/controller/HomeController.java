@@ -36,4 +36,8 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping("read")
+	public void read() {
+		
+	}
 }
