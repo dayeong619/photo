@@ -31,14 +31,22 @@
 	<div id="box">
 		
 	</div>
+	
 	<script>
 		$("#fileform").change(function(){
-			var reader = new FileReader();
-			reader.onload = function(e){
-				var $img = $("<img>").attr("src", e.target.result);
-				$("#box").append($img);
-			}
-			reader.readAsDataURL($(this)[0].files[0]); //내가 선택한 한개의 파일을 읽어라
+			
+			$($(this)[0].files).each(function(i,obj){
+				var reader = new FileReader();
+				console.log(obj)
+				reader.onload = function(e){
+					var $img = $("<img>").attr("src", e.target.result);
+					$("#box").append($img);
+				}
+				reader.readAsDataURL(obj); //내가 선택한 한개의 파일을 읽어라
+			});
+			
+			// $(this)[0].files ->자바스크립트로 바꾸겠다. 자바스크립트에 files를 쓰겠당
+			
 		})
 		
 	</script>

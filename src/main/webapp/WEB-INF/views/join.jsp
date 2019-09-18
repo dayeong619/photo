@@ -205,17 +205,6 @@
 		
 	})	
 		
-		
-	function checkz() {
-      
-    
-      var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정
- 
- 
-     
-      
-      
-	}
 	</script>
 	
 	

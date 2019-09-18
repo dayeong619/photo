@@ -46,5 +46,10 @@ public class PhotoDaoImpl implements PhotoDao {
 		return sqlSession.selectOne(namespace+".idcheck",userid);
 	}
 
+	@Override
+	public void delete(int no) throws Exception {
+		sqlSession.delete(namespace+".insertMember", no);
+	}
+
 
 }

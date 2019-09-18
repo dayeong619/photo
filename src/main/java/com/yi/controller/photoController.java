@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -61,13 +60,10 @@ public class photoController {
 			logger.info("file name :" + file.getOriginalFilename());
 			logger.info("file size :" + file.getSize());	
 			String savedName = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
+			vo.setFilename(savedName);
+			service.addAttach(vo);
 			list.add(savedName);
 		}
-		
-		vo.setFilename(list);
-		service.addAttach(vo);
-		
-		
 		return "redirect:/photolist";
 		
 	}
@@ -121,19 +117,20 @@ public class photoController {
 		logger.info("****photolistGET");
 		
 		List<PhotoalbumVO> list = service.getAttach();
+		
 		model.addAttribute("list", list);
 	
-		
 	}
 	
 	
 	@ResponseBody
 	@RequestMapping(value="deleteFile", method=RequestMethod.POST)
-	public ResponseEntity<String> deleteFile(String filename){
+	public ResponseEntity<String> deleteFile(String filename) throws Exception{
 		logger.info("---->deleteFile, filename은 "+filename);
 		ResponseEntity<String> entity = null;
 		
 		try {
+			
 			//큰 이미지 삭제
 			String originFile = filename.substring(0,12)+filename.substring(14);
 			File file2 = new File(uploadPath+"/"+originFile);

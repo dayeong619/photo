@@ -1,11 +1,10 @@
 package com.yi.domain;
 
 import java.util.Date;
-import java.util.List;
 
 public class PhotoalbumVO {
 	private int no;
-	private List<String> filename;
+	private String filename;
 	private Date regdate;
 	
 	public int getNo() {
@@ -15,10 +14,11 @@ public class PhotoalbumVO {
 		this.no = no;
 	}
 	
-	public List<String> getFilename() {
+	
+	public String getFilename() {
 		return filename;
 	}
-	public void setFilename(List<String> filename) {
+	public void setFilename(String filename) {
 		this.filename = filename;
 	}
 	public Date getRegdate() {

@@ -12,4 +12,7 @@ public interface PhotoDao {
 	
 	public void insertMember(PhotomemberVO vo) throws Exception;
 	public PhotomemberVO login(String userid, String userpw) throws Exception;
+	public void delete(int no) throws Exception;
+	
+	
 }

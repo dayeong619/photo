@@ -32,6 +32,7 @@
 			<span id="spandate">
 				<fmt:formatDate value="${files.regdate }" pattern="yyyy.MM.dd"/>
 			</span>
+			<span>${files.filename}</span>
 			<button data-src="displayFile?filename=${files.filename}">X</button>
 			<img src="displayFile?filename=${files.filename}" class="imgClick">
 		</div>
@@ -43,6 +44,10 @@
 </body>
 </html>
 <script>
+
+	
+	
+
 	$(document).on("click", ".photoDiv button", function(){
 		var result = confirm("삭제하시겠습니까?");
 		

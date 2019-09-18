@@ -17,10 +17,7 @@ public class PhotoServiceImple implements PhotoService { //dao에 있는 함수 
 
 	@Override
 	public void addAttach(PhotoalbumVO vo) throws Exception {
-		for(String filename : vo.getFilename()) {
-			dao.addAttach(filename);
-		}
-		
+			dao.addAttach(vo.getFilename());
 	}
 
 	@Override
@@ -41,6 +38,11 @@ public class PhotoServiceImple implements PhotoService { //dao에 있는 함수 
 	@Override
 	public int idcheck(String userid) throws Exception {
 		return dao.idcheck(userid);
+	}
+
+	@Override
+	public void delete(int no) throws Exception {
+		dao.delete(no);
 	}
 
 	

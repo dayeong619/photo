@@ -28,6 +28,11 @@
 		where userid= #{userid} and userpw=#{userpw}
 	</select>
 	
+	<delete id="delete">
+		DELETE FROM photoalbum
+		WHERE no=#{no}
+
+	</delete>
 </mapper>
 
 
