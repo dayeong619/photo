@@ -31,7 +31,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		
 		Object loginDto = modelAndView.getModel().get("loginDto"); //아이디랑,비번 일치 하는사람있어서 그 사람꺼 온거임
-		if(loginDto != null) {
+		if(loginDto != null) { //dto 들고 있엉 로그인 되겠어~~~
 			session.setAttribute("Auth", loginDto); //그 사람의 아이디랑 비번 저장됨.
 			
 			Object dest = session.getAttribute("dest");
@@ -39,8 +39,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			
 			
 			response.sendRedirect(path); //home컨트롤러에 return값으로 감.
-		}else {
-			response.sendRedirect(request.getContextPath()+"/auth/login");
+		}else { //로그인 실패 dto가 없엉.
+			session.setAttribute("error", "notMatch"); //로그인실패시 키를 하나 주겠다
+			response.sendRedirect(request.getContextPath()+"/login");
 		}
 		
 		

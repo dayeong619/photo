@@ -44,22 +44,31 @@
 </html>
 <script>
 	$(document).on("click", ".photoDiv button", function(){
+		var result = confirm("삭제하시겠습니까?");
 		
-		var file = $(this).attr("data-src"); 
-		var $button = $(this);
-		$.ajax({
-			url:"deleteFile",
-			type:"post",
-			data:{filename:file},
-			dataType:"text",
-			success:function(res){
-				console.log(res);
-				if(res == "success"){
-					alert("삭제하였습니다.");
-					$button.parent().remove();
+		if(result){
+			//yes
+			var file = $(this).attr("data-src"); 
+			var $button = $(this);
+			$.ajax({
+				url:"deleteFile",
+				type:"post",
+				data:{filename:file},
+				dataType:"text",
+				success:function(res){
+					console.log(res);
+					if(res == "success"){
+						alert("삭제하였습니다.");
+						$button.parent().remove();
+					}
 				}
-			}
-		})
+			})
+			
+		}else{
+			//no
+		}
+		
+		
 		
 	})
 	

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -19,12 +20,15 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.yi.domain.LoginDto;
 import com.yi.domain.PhotoalbumVO;
+import com.yi.domain.PhotomemberVO;
 import com.yi.service.PhotoService;
 import com.yi.util.UploadFileUtils;
 
@@ -156,16 +160,49 @@ public class photoController {
 		logger.info("****joinGET");
 	}
 	
+	@RequestMapping(value="idcheck")
+	@ResponseBody
+	public int idcheck(@RequestBody String userid) throws Exception {
+        
+       return service.idcheck(userid);
+    }
+	
 	@RequestMapping(value="join", method=RequestMethod.POST)
-	public void joinPOST() {
+	public String joinPOST(PhotomemberVO vo) throws Exception {
 		logger.info("****joinPOST");
 		
+		service.insertMember(vo);
 		
-		
-		
-		
-		
+		return "redirect:/login";
 	}
+	
+	@RequestMapping(value="login", method=RequestMethod.GET)
+	public void loginGET() {
+		logger.info("****loginGET");
+	}
+	
+	@RequestMapping(value="loginPost", method=RequestMethod.POST)
+	public void loginPOST(PhotomemberVO vo, Model model) throws Exception {
+		logger.info("****loginPOST, vo는"+vo);
+		PhotomemberVO dbmember = service.login(vo.getUserid(), vo.getUserpw());
+		
+		if(dbmember == null) {
+			logger.info("loginPOST -> login fail!!!!!!!!!!!!!!!");
+			return ;
+		}
+		
+		logger.info("1");
+		LoginDto dto = new LoginDto();
+		dto.setUserid(dbmember.getUserid());
+		dto.setUsername(dbmember.getUsername());
+		model.addAttribute("loginDto", dto);
+		logger.info("2");
+	}
+	
+	
+	
+	
+	
 }
 
 

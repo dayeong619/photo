@@ -11,6 +11,22 @@
    		select * from photoalbum
   	</select>
 	
+	<select id="idcheck" parameterType="String" resultType="int">
+		select count(*) from photomember
+		where userid = #{userid}	
+	</select>
+	
+	<insert id="insertMember">
+		INSERT INTO photomember
+		(userid, username, userpw, email, tel)
+		VALUES(#{userid}, #{username}, #{userpw}, #{email}, #{tel})
+	</insert>
+	
+	<select id="login" resultType="PhotomemberVO">
+		SELECT userid, userpw
+		FROM photomember
+		where userid= #{userid} and userpw=#{userpw}
+	</select>
 	
 </mapper>
 

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Google Photos</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 	*{margin:0; padding:0;}
@@ -50,11 +50,10 @@
 	<div id="logo"><img src="${pageContext.request.contextPath}/resources/images/logo.png"></div>
 	<h2>Photos</h2>
 	<div id="icon">
-		<a href="${pageContext.request.contextPath}/photolist"><img src="${pageContext.request.contextPath}/resources/images/search.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="${pageContext.request.contextPath}/photoinsert"><img src="${pageContext.request.contextPath}/resources/images/plus.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<img src="${pageContext.request.contextPath}/resources/images/share.png">&nbsp;&nbsp;&nbsp;&nbsp;
-		<img src="${pageContext.request.contextPath}/resources/images/jum.png">&nbsp;&nbsp;&nbsp;&nbsp;
-		<img src="${pageContext.request.contextPath}/resources/images/ring.png">&nbsp;&nbsp;&nbsp;&nbsp;
-		<img src="${pageContext.request.contextPath}/resources/images/login.png" id="loginimg">
+		<a href="${pageContext.request.contextPath}/photolist"><img src="${pageContext.request.contextPath}/resources/images/jum.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath}/login"><img src="${pageContext.request.contextPath}/resources/images/ring.png"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath}/join"><img src="${pageContext.request.contextPath}/resources/images/login.png" id="loginimg"></a>
 	</div>
 </header>
