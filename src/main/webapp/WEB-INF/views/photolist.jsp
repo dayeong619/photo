@@ -9,8 +9,9 @@
 		padding-top:50px;
 	}
 	.photoDiv{
+		margin-top:30px;
 		width: 200px;
-		height: 200px;
+		height: 300px;
 		float: left;
 		padding-left:40px;
 		position: relative;
@@ -24,6 +25,18 @@
 		top:0;
 		right:0;
 	}
+	.gogogo{
+		z-index:100;
+		position:fixed;
+		left:0;
+		top:0;
+		width:100%;
+		height: 100%;
+		background: rgba(0,0,0,0.9);
+		padding:20px 30%;
+		display: none;
+		color:#D5D5D5;
+	}
 </style>
 <section>
 
@@ -33,8 +46,11 @@
 				<fmt:formatDate value="${files.regdate }" pattern="yyyy.MM.dd"/>
 			</span>
 			<span>${files.filename}</span>
-			<button data-src="displayFile?filename=${files.filename}">X</button>
+			<%-- <button data-src="displayFile?filename=${files.filename}">X</button> --%>
 			<img src="displayFile?filename=${files.filename}" class="imgClick">
+		</div>
+		<div class="gogogo">
+			<img src="displayFile?filename=${files.filename}">
 		</div>
 	</c:forEach> 
 	
@@ -76,9 +92,14 @@
 		
 		
 	})
-	
+
 	$(document).on("click", ".photoDiv .imgClick", function(){
-		$(this).css("width","500px").css("height","500px").css("z-index","100");
+		$(this).addClass(".gogogo");
+		
+		
+		
+		
+		
 	})
 	
 	
